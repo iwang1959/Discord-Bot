@@ -5,6 +5,7 @@ import json
 import requests
 from discord.ext import commands
 
+from keep_alive import keep_alive
 my_secret = os.environ['TOKEN']
 
 client = discord.Client()
@@ -57,6 +58,9 @@ async def on_message(message):#the parameter message stores content of the messa
 
   if "night" in message.content.lower():
     await message.channel.send("Good night " + str(message.author))
+
+  if "hello" in message.content.lower():
+    await message.channel.send("Hello! " + str(message.author))
 
   
 
@@ -172,7 +176,7 @@ async def on_message_edit(before, after):
 
 
 
-
+keep_alive()
 client.run(my_secret)
 #bot.run(my_secret)
 
